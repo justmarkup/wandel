@@ -1,4 +1,4 @@
-wandel
+wandel (a game about transforms)
 ======
 
-Work in progress: A game about transforms
+This is work in progress by @justmarkup
