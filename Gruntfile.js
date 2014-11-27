@@ -23,7 +23,7 @@ module.exports = function(grunt){
 		uglify: {
 		    build: {
 		        files: {
-		            'dist/js/base.min.js': ['src/js/base.js']
+		            'dist/js/base.min.js': ['src/js/vendor/jquery-2.1.1.min.js', 'src/js/vendor/randomColor.js', 'src/js/base.js']
 		        }
 		    }
 		},
@@ -66,7 +66,7 @@ module.exports = function(grunt){
 		        tasks: ['htmlhint']
 		    },
 		    js: {
-		        files: ['src/js/base.js'],
+		        files: ['src/js/**/*.js'],
 		        tasks: ['uglify']
 		    },
 		    css: {

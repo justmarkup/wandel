@@ -7,3 +7,10 @@
  // Helpers
 @import 'helpers/variables';
 @import 'helpers/helpers';
+
+// Typography and Elements
+@import 'elements/typography';
+
+// Layout
+@import 'page/base';
+@import 'page/gametable';
