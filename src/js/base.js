@@ -9,8 +9,10 @@ if (isModern()) {
 
 	function init() {
 		// prepare game table
-		var randomRed;
+		var randomRed,
+			direction;
 		$('.game-table div').each(function (i) {
+			direction = (i%3 == 0) ? '⟲ ' : '⟳ '; 
 	  		randomRed = randomColor({hue: 'red', format: 'rgb'});
 	  		$(this).css({
 				'width': $('.game-table').width() / 4,
@@ -18,7 +20,7 @@ if (isModern()) {
 	  		}).animate({
 	  			opacity: 1,
 	  		}, 400 * (i + 1), function() {
-  			}).html('<p>' + (i+1) + '</p>');
+  			}).html('<p>' + direction + (i+1) + '</p>');
 		});
 	}
 

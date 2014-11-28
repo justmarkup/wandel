@@ -23,7 +23,7 @@ module.exports = function(grunt){
 		uglify: {
 		    build: {
 		        files: {
-		            'dist/js/base.min.js': ['src/js/vendor/jquery-2.1.1.min.js', 'src/js/vendor/randomColor.js', 'src/js/base.js']
+		            'dist/js/base.min.js': ['src/js/components/jquery/dist/jquery.min.js', 'src/js/components/randomColor/randomColor.js', 'src/js/base.js']
 		        }
 		    }
 		},
