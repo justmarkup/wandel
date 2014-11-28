@@ -1,4 +1,6 @@
 wandel (a game about transforms)
 ======
 
-This is work in progress by @justmarkup
+Demo (work in progress): http://justmarkup.github.io/wandel/
+
+For details contact me on twitter @justmarkup
