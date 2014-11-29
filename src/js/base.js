@@ -12,15 +12,16 @@ if (isModern()) {
 		var randomRed,
 			direction;
 		$('.game-table div').each(function (i) {
-			direction = (i%3 == 0) ? '⟲ ' : '⟳ '; 
+			direction = (i%2 == 0) ? '⟲ ' : '⟳ '; 
 	  		randomRed = randomColor({hue: 'red', format: 'rgb'});
 	  		$(this).css({
 				'width': $('.game-table').width() / 4,
-	    		'height': $('.game-table').height() / 4
+	    		'height': $('.game-table').height() / 4,
+	    		'color': randomRed
 	  		}).animate({
 	  			opacity: 1,
 	  		}, 400 * (i + 1), function() {
-  			}).html('<p>' + direction + (i+1) + '</p>');
+  			}).html('<p>' + direction + '</p>');
 		});
 	}
 
