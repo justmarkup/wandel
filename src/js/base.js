@@ -21,7 +21,7 @@ if (isModern()) {
 	  		}).animate({
 	  			opacity: 1,
 	  		}, 400 * (i + 1), function() {
-  			}).html('<p>' + direction + '</p>');
+  			}).html('<p>' + direction + ' <small>' + (Math.ceil(Math.floor((Math.random() * 360)) / 10) * 10) + 'deg</small></p>');
 		});
 	}
 
