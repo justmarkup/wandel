@@ -5,14 +5,37 @@ var isModern = function() {
 if (isModern()) {
 	document.documentElement.classList.add('has-js');
 
+	// smarter resize function
 	function on_resize(c,t){onresize=function(){clearTimeout(t);t=setTimeout(c,100)};return c};
 
+	// get angle value of transform: rotate http://css-tricks.com/get-value-of-css-rotation-through-javascript/
+	var getRotationValue = function (tr) {
+		if (tr.substring(0, 6) == 'matrix') {
+			var values = tr.split('(')[1];
+			values = values.split(')')[0];
+    		values = values.split(',');
+
+			var a = values[0],
+				b = values[1],
+				c = values[2],
+				d = values[3];
+  			
+  			return Math.round(Math.atan2(b, a) * (180/Math.PI));
+ 		} else {
+   			return 0;
+ 		}
+	};
+
+	// prepare game table and eventlistener
 	function init() {
-		// prepare game table
-		var randomRed,
-			direction;
+		var direction,
+			clockwise,
+			randomNumber,
+			randomRed;
+
 		$('.game-table div').each(function (i) {
-			direction = (i%2 == 0) ? '⟲ ' : '⟳ '; 
+			direction = '⟳ ';
+			randomNumber = (Math.ceil(Math.floor((Math.random() * 360)) / 10) * 10);
 	  		randomRed = randomColor({hue: 'red', format: 'rgb'});
 	  		$(this).css({
 				'width': $('.game-table').width() / 4,
@@ -21,7 +44,11 @@ if (isModern()) {
 	  		}).animate({
 	  			opacity: 1,
 	  		}, 400 * (i + 1), function() {
-  			}).html('<p>' + direction + ' <small>' + (Math.ceil(Math.floor((Math.random() * 360)) / 10) * 10) + 'deg</small></p>');
+  			}).html('<p data-amount="' + randomNumber + '">' + direction + ' <small>' + randomNumber + 'deg</small></p>');
+		});
+
+		$('.game-table div p').click(function () {
+			$('h1').css('transform', 'rotate(' + ((getRotationValue($('h1').css('transform'))) + parseFloat($(this).attr('data-amount'))) + 'deg)');
 		});
 	}
 
