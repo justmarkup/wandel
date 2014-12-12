@@ -28,18 +28,20 @@ if (isModern()) {
 
 	// prepare game table and eventlistener
 	function init() {
-		var direction,
+		var gameTable = '.game-table',
+			rotater = '.js-rotater',
+			direction,
 			clockwise,
 			randomNumber,
 			randomRed;
 
-		$('.game-table div').each(function (i) {
+		$(gameTable + ' div').each(function (i) {
 			direction = '⟳ ';
 			randomNumber = (Math.ceil(Math.floor((Math.random() * 360)) / 10) * 10);
 	  		randomRed = randomColor({hue: 'red', format: 'rgb'});
 	  		$(this).css({
-				'width': $('.game-table').width() / 4,
-	    		'height': $('.game-table').height() / 4,
+				'width': $(gameTable).width() / 4,
+	    		'height': $(gameTable).height() / 4,
 	    		'color': randomRed
 	  		}).animate({
 	  			opacity: 1,
@@ -47,8 +49,9 @@ if (isModern()) {
   			}).html('<p data-amount="' + randomNumber + '">' + direction + ' <small>' + randomNumber + 'deg</small></p>');
 		});
 
-		$('.game-table div p').click(function () {
-			$('h1').css('transform', 'rotate(' + ((getRotationValue($('h1').css('transform'))) + parseFloat($(this).attr('data-amount'))) + 'deg)');
+		$(gameTable + ' div p').click(function () {
+			$(rotater).css('transform', 'rotate(' + ((getRotationValue($(rotater).css('transform'))) + parseFloat($(this).attr('data-amount'))) + 'deg)');
+			$(rotater).html('<h1>' + getRotationValue($(rotater).css('transform')) + '</h1>');
 		});
 	}
 
@@ -62,5 +65,5 @@ if (isModern()) {
 
 
 } else {
-	alert('Works on my machine, but not on yours. HAHAHA');
+	alert('Works on my machine!');
 }
