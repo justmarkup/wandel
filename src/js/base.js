@@ -19,8 +19,12 @@ if (isModern()) {
 				b = values[1],
 				c = values[2],
 				d = values[3];
-  			
-  			return Math.round(Math.atan2(b, a) * (180/Math.PI));
+
+			var radians = Math.atan2(b, a);
+			if ( radians < 0 ) {
+				radians += (2 * Math.PI);
+			}
+			return Math.round( radians * (180/Math.PI));
  		} else {
    			return 0;
  		}
